@@ -1,0 +1,116 @@
+<!--
+  ============================================================
+  CONVITE ANIMADO — 28 ANOS DA ARIEL (TEMA FUNDO DO MAR)
+  ============================================================
+  Como publicar no GitHub Pages:
+  1. Crie um repositório novo no GitHub (ex: convite-ariel).
+  2. Suba estes 3 arquivos na raiz do repositório:
+     index.html, style.css, script.js
+  3. Vá em Settings > Pages > Branch: main /root > Save.
+  4. Em 1-2 minutos seu link fica em:
+     https://SEU-USUARIO.github.io/convite-ariel/
+  Este convite não usa nenhuma imagem externa — só CSS/SVG.
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>28 anos da Ariel — Você vem mergulhar?</title>
+  <meta name="description" content="Convite animado para o aniversário de 28 anos da Ariel, tema fundo do mar.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Fundo do oceano: camadas com profundidade + parallax -->
+<div class="ocean" id="ocean">
+
+  <!-- Raios de luz atravessando a água -->
+  <div class="light-rays"></div>
+
+  <!-- Bolhas animadas (geradas via JS) -->
+  <div class="layer layer-bubbles" id="bubbleField" data-depth="0.4"></div>
+
+  <!-- Peixes passando lentamente (gerados via JS) -->
+  <div class="layer layer-fish" id="fishField" data-depth="0.6"></div>
+
+  <!-- Partículas flutuando -->
+  <div class="layer layer-particles" id="particleField" data-depth="0.3"></div>
+
+  <!-- ===================== HERO ===================== -->
+  <main class="hero">
+
+    <!-- Título -->
+    <h1 class="title">
+      <span class="title-line title-line--main">28 anos fazendo arte.</span>
+      <span class="title-line title-line--sub">Agora literalmente!</span>
+    </h1>
+
+    <!-- Convite -->
+    <section class="card invite-card">
+      <p class="invite-text">
+        Você acaba de receber uma convocação oficial para mergulhar
+        comigo nessa comemoração.
+      </p>
+
+      <ul class="invite-details">
+        <li><span aria-hidden="true">📅</span> <strong>Data:</strong> 15/08</li>
+        <li><span aria-hidden="true">🕒</span> <strong>Horário:</strong> 09:00</li>
+        <li><span aria-hidden="true">📍</span> <strong>Local:</strong> Parque dos Igarapés, TV. WE 12, nº 1000, Belém — PA</li>
+      </ul>
+
+      <!-- Contador regressivo -->
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="countdown-item"><span id="cd-days">00</span><small>dias</small></div>
+        <div class="countdown-item"><span id="cd-hours">00</span><small>horas</small></div>
+        <div class="countdown-item"><span id="cd-min">00</span><small>min</small></div>
+        <div class="countdown-item"><span id="cd-sec">00</span><small>seg</small></div>
+      </div>
+    </section>
+
+    <!-- Zona dos botões: NÃO precisa de área livre pra fugir -->
+    <div class="button-zone" id="buttonZone">
+      <button class="btn btn--yes" id="btnYes">SIM, EU VOU 🧜🏻‍♀️</button>
+      <button class="btn btn--no" id="btnNo">NÃO 😒</button>
+
+      <!-- Balão de provocação que aparece perto do botão NÃO -->
+      <div class="taunt-bubble" id="tauntBubble"></div>
+    </div>
+
+  </main>
+
+  <!-- Corais em primeiro plano -->
+  <div class="layer layer-coral" data-depth="0.9">
+    <svg viewBox="0 0 1200 160" class="coral-svg" preserveAspectRatio="none" aria-hidden="true">
+      <g>
+        <path d="M0,160 C40,90 60,140 90,80 C110,40 130,90 140,160 Z" fill="#FF8E72" opacity="0.9"/>
+        <path d="M60,160 C90,120 100,150 130,110 C150,80 165,120 170,160 Z" fill="#5EEAD4" opacity="0.85"/>
+        <path d="M1000,160 C1040,100 1055,150 1080,90 C1100,50 1120,100 1130,160 Z" fill="#FF8E72" opacity="0.9"/>
+        <path d="M1080,160 C1105,130 1115,155 1140,120 C1155,95 1170,130 1175,160 Z" fill="#38BDF8" opacity="0.8"/>
+        <path d="M1150,160 C1175,110 1190,150 1200,110 L1200,160 Z" fill="#5EEAD4" opacity="0.9"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- Modal de confirmação -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal card">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    <p class="modal-message">Sabia que você aceitaria 💙</p>
+    <p class="modal-sub">Agora me conta seu nome pra eu te esperar direitinho:</p>
+    <form id="confirmForm" class="confirm-form">
+      <input type="text" id="guestName" name="nome" placeholder="Seu nome" required>
+      <button type="submit" class="btn btn--yes btn--small">Confirmar presença</button>
+    </form>
+    <p class="modal-thanks" id="modalThanks" hidden>Confirmação enviada! Até dia 15 🧜🏻‍♀️🐚</p>
+  </div>
+</div>
+
+<!-- Canvas para explosão de confete -->
+<canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
