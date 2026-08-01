@@ -262,10 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btnNo.style.position = 'absolute';
       btnNo.style.left = `${zoneRect.width / 2 + 70}px`;
       btnNo.style.top = `${zoneRect.height / 2}px`;
+      placed = true; // já pode reagir à aproximação do mouse desde o início
 
       // Desktop: foge quando o mouse chega perto
       window.addEventListener('mousemove', (e) => {
-        if (!placed) return;
         if (distanceToButton(e.clientX, e.clientY) < 90) evade();
       });
 
